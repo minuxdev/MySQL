@@ -1,0 +1,130 @@
+Grupo de comandos SQL
+
+Todo sistema d e gerenciamento de banco de dados obedece um padrao nos comandos usados para se comunicar com o banco, este padrao reside no agrupamento dos comandos quanto a sua funcao.
+
+Os comando SQL sao divididos em quatro (4) partes principais que sao:
+LDD = Linguagem de Definicao de Dados
+    Grupo de comandos responsaveis pela estruturacao das tabelas. Definem os tipos de dados a serem aceites, o tamanho,
+    o tipo de campo, se determinados campos vao ou nao aceitrar valores nulos, se possuem valores padrao, se podem ou nao
+    aceitar valores repetidos, atribuicao de chaves (primarias ou estrangeiras), entre outros detalhes relacionados
+    a infra-estrutura.
+
+    Fazem parte deste grupo os seguintes comandos: CREATE, ALTER E DROP.
+
+
+LMD = Linguagem de Modelagem de Dados
+    Conjunto de comandos responsaveis pela manipulacao de dados no banco. Fazem parte deste conjunto comandos de insercao, actualizacao e exclusao de valores do banco de dados.
+
+    Fazem parte deste grupo os seguintes comandos: INSERT, UPDATE e DELETE.
+
+LCD = Linguagem de Controlo de Dados
+    Comandos responsaveis pelo controle de acesso ao banco de dados, definem quem pode fazer consultas, excluir e editar dados,
+    criar, modificar e excluir tabelas um banco de dados.
+
+    Fazem parte deste grupo os seguintes comandos: GRANT e REVOKE.
+
+LCD = Linguagem de Consulta de Dados
+    Conjunto voltado as consultas no banco podendo retornar todos dados existentes assim como parte destes.
+    Tambem e possivel retornar valores que estao em outras tabelas do mesmo banco, desde que estas estejam interligadas
+    (geralmente com as chaves primaria e estrangeiras).
+
+    Fazem parte deste grupo os seguintes comandos: SELECT e suas clausulas.
+
+
+
+
+Uso de comandos de Definicao de Dados
+
+CREATE (equivalente a "criar") = Usado para criar ususarios, banco de dados e tabelas.
+
+
+criar Ususario
+
+sinstax:
+    CREATE USER nome_do_usuario@host;
+
+    Ao usar este comando pode vir a retornar erro em situacoes em que o ususario ja tenha sido criado.
+    Para contornar essa situacao pode se adicionar clausulas como [OR REPLACE] e [IF NOT EXISTS] de modo a receber "Warnings" (avisos) ao inves do erro em si. O comando ficaria:
+
+    CREATE [OR REPLACE] USER [IF NOT EXISTS] nome_do_usuario@host;
+
+    A clausula [OR REPLACE] e um shorcut para:
+
+    DROP USER IF EXISTS name;
+    CREATE USER name ...;
+
+    e a [IF NOT EXISTS] da um aviso informando que o usuario ja existe ao inves de produzir erro.
+
+    Para que o usuario use um metodo de autenticacao e necessario incluir no comando a clausula IDENTIFIED BY "password";
+
+    CREATE USER IF NOT EXISTS nome_do_usuario@host IDENTIFIED BY 'password';
+
+
+Criar Banco de Dados
+
+Sintax:
+
+CREATE DATABASE nome_do_db;
+
+Tal como na criacao de ususarios, o comando create retorna erros quando encontra objectos ja existentes, nesse caso, o uso de clausulas para contornar essa situacao e necessaria.
+
+CREATE DATABASE IF NOT EXISTS nome_do_db;
+
+
+Criar Tabelas
+sintax:
+    CREATE TABLE nome_da_tabela("campo" "tipo de dado" "CONSTRAINT",
+"campo2" "tipo de dado" "CONSTRAINT", etc);
+
+    CREATE TABLE IF NOT EXISTS nome_da_tabela("campo" "tipo de dado" "CONSTRAINT",
+"campo2" "tipo de dado" "CONSTRAINT", etc);
+
+
+ALTER (equivalente a "modificar") = usado para alterar a infra-estrutura do banco de dado como base de dados, tabelas e ususarios.
+
+Alterar base de dados
+sintax:
+    ALTER USER 'nome_do_usuario'@'localhost' IDENTIFIED BY "password | novo password";
+    ALTER USER 'marijn'@'localhost' ACCOUNT LOCK;
+
+    ALTER USER 'nome_do_usuario'@'localhost' PASSWORD EXPIRE INTERVAL 120 DAY;
+    ALTER USER 'nome_do_usuario'@'localhost' PASSWORD EXPIRE NEVER;
+    ALTER USER 'nome_do_usuario'@'localhost' PASSWORD EXPIRE DEFAULT;
+
+    ALTER USER 'nome_do_usuario'@'localhost' WITH
+    MAX_USER_CONNECTIONS 10 = numero maximo de conexoes
+    MAX_QUERIES_PER_HOUR 200 = numero de consultas que o ususario pode fazer por hora incluindo UPDATE
+    MAX_UPDATES_PER_HOUR 5; = numero de UPDATES (nao consultas como visualizacoes) que o ususario pode fazer por hora.
+
+
+
+Alterar base de dados
+sintax:
+    ALTER DATABASE nome_do_db COMMENT='Presentations';
+    ALTER DATABASE nome_do_db CHARACTER SET='utf8'  COLLATE='utf8_bin';
+
+Alterar tabela
+sintax:
+ALTER TABLE [IF EXISTS] nome_da_tabela {ACCAO E VALOR A SER ALTERADO};
+
+ALTER TABLE produtos ADD COLUMN [IF NOT EXISTS] promocao FLOAT(3) DEFAULT=0,2;
+ALTER TABLE clientes DROP minux;
+ALTER TABLAE clientes ADD PRIMARY KEY id;
+ALTER TABLAE clientes DROP PRIMARY KEY;
+ALTER TABLAE clientes DROP INDEX IF EXISTS nome_do_index;
+CHANGE [COLUMN] [IF EXISTS] nome_da_coluna novo_nome "definicoes da coluna";
+MODIFY [COLUMN] [IF EXISTS] nome_da_coluna "definicoes da coluna"
+
+
+
+DROP (equivalente a "eliminar") = usado para eliminar objectos e definicoes. E com este comando que podemos eliminar colunas, chaves, tabelas assim como banco de dados.
+
+Eliminar banco de dados:
+sintax:
+    DROP DATABASE nome_do_db;
+
+Eliminar tabela
+sintax:
+    DROP TABLE nome_da_tabela;
+
+E comando DROP, como ja referido acima, pode eliminar desde chaves a colunas, porem, nesses casos e usado junto com o comando ALTER como parte da modificacao do objecto do banco (tabela).

@@ -1,0 +1,34 @@
+Introducao ao SQL
+
+SQL significa Standard Query Language (Linguagem de Consulta Padronizada, em traducao livre).
+E usada para fazer gerencia de bancos de em sistemas de gerenciamento como MySQL, PostgreSQL, entre outros.
+
+Quando se trata de fazer gestao de banco de dados, o SQL te permite fazer quase tudo o que se espera, como por exemplo,
+fazer consultas num banco de dados;
+obter dados do banco de dados
+inserir dados num banco de dados
+deletar dados do banco de dados
+actualizar dados no banco de dados
+criar visualizacoes no banco de dados
+gerenciar acessos ao banco de dados
+
+
+Os comando SQL sao divididos em quatro (4) partes que sao:
+LDD = Linguagem de Definicao de Dados
+    Grupo de comandos responsaveis pela estruturacao das tabelas. Definem os tipos de dados a serem aceites, o tamanho,
+    o tipo de campo, se determinados campos vao ou nao aceitrar valores nulos, se possuem valores padrao, se podem ou nao
+    aceitar valores repetidos, atribuicao de chaves (primarias ou estrangeiras), entre outros detalhes relacionados
+    a infra-estrutura.
+
+
+LMD = Linguagem de Modelagem de Dados
+    Conjunto de comandos responsaveis pela manipulacao de dados no banco. Fazem parte deste conjunto comandos de insercao, actualizacao e exclusao de valores do banco de dados.
+
+LCD = Linguagem de Controlo de Dados
+    Comandos responsaveis pelo controle de acesso ao banco de dados, definem quem pode fazer consultas, excluir e editar dados,
+    criar, modificar e excluir tabelas um banco de dados.
+
+LCD = Linguagem de Consulta de Dados
+    Conjunto voltado as consultas no banco podendo retornar todos dados existentes assim como parte destes.
+    Tambem e possivel retornar valores que estao em outras tabelas do mesmo banco, desde que estas estejam interligadas
+    (geralmente com as chaves primaria e estrangeiras).

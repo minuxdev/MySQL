@@ -1,0 +1,68 @@
+Constraints
+
+Trata-se de restricoes aplicadas em tabelas SQL de modo
+a ter mais controlo no tipo de dado a ser inserido em cada
+coluna da tabela (column). Podemos considerar as "Constraints" como as
+condicoes pre-estabelecidas em que os dedos devem a estas se submeter
+de modo a serem considerados validos e aceites na tabela.
+
+
+RESTRICOES MAIS USADAS
+
+Existem varias Constraints, porem, neste post veremos apenas as mais usadas que sao:
+
+a) NOT NULL - torna o campo obrigatorio (regeita insercao ou
+update sem que o campo seja preenchido)
+
+b) UNIQUE - regeita repeticoes de dados no campo especificado;
+
+c) PRIMARY KEY -
+
+d) FOREIGN KEY -
+
+e) AUTO_INCREMENT - adiciona mais 1 no da ultima insercao.
+Pode-se configurar o seu valor de partida, desde que depois da criacao (depois do
+ultimo ")" se adicione AUTO_INCREMENT=valor;
+
+e) DEFAULT - valor que sera atribuido em caso de nenhum valor seja informado.
+
+
+
+TIPOS DE DADOS
+
+1 - Tipo INT
+Usados para armazenar numero na tabela.
+
+Os mais usados sao:
+a) TINYINT - [-127 - 127]
+b) SMALLINT
+C) INT;
+
+2 - Tipo Float
+Usado para armazenar numeros decimais no campo;
+
+a) FLOAT(M,D) - M=numero de digitos, D=numero de casas decimais;
+b) DECIMAL(M,D) - precisao maior que FLOAT;
+
+
+3 - Tipo Char
+Para trabalhar com caracteres;
+
+a) CHAR(M) - M=numero de caracteres (0 - 255);
+b) VARCHAR(M) - String de tamanho variavel (0 - 65535);
+c) MEDIUMTEXT - Usado para armazenar textos de ate quase 17M de caracteres;
+d) LONGTEXT - armazena texto gigantescos.
+
+4 - BLOB, MEDIUMBLOB ou TINYBLOB - usado para armazenamento de arquivos 
+binarios (musica, fotos, videos, etc)
+
+5 - Tempo
+Usado para armazenar informacoes relacionadas com o tempo.
+
+a) DATE - armazena informacoes relacionadas com o datas (yyyy-mm-dd)
+b) DATETIME - (yyyy-mm-dd HH:MM:SS)
+c) TIME - HH:MM:SS
+d) YEAR(M) - M=numero de digitos na representacao (2 ou 4, padrao 4)
+
+
+

@@ -1,0 +1,29 @@
+MySQL
+
+O MySQL, lançado em 1995, é considerado um dos mais populares bancos de dados. Pode-se destacar inúmeras vantagens do MySQL, como a compatibilidade com os diversos sistemas operacionais, entre eles o Linux, Windows e Mac.
+
+Devido ao seu elevado desempenho, uso gratuito, ser multiusuário, robusto e seguro, o Mysql conquistou muitas empresas e desenvolvedores iniciantes.
+
+é MySQL, consiste num Sistema Gerenciador de Banco de Dados (SGBD), cujo trabalha com a linguagem SQL. Dessa forma, para interagir com o banco de dados MySQL, é preciso conhecer os comandos SQL.
+
+A sigla sql simboliza “Structured Query Language”, ou Linguagem Estruturada para Pesquisas, utilizada como padrão nos diversos bancos de dados de modelo relacional. Neste modelo, os dados são registrados em tabelas, as quais se relacionam entre si.
+
+o banco MySQL registra e gerencia esses dados. Através dele, pode-se ler as informações pelo comando “select”, inserir através do “insert”, alterar pelo código “update” e excluí-las, através do “delete”.
+
+
+Vantagens do MySQL
+
+Seguranca:
+    No que diz respeito a seguranca, o Sistema de Gerenciamento de Banco de Dados MySQL disponibiliza mecanismo de controle de acesso por varios niveis, sendo possivel conferir a um ou grupo de usuarios determinado tipo de permissoes para acessar, modificar e ou excluir dados do banco, assim como pode-se restringir o acesso apenas para consultas a todas ou um grupo de colunas.
+
+Integridade do banco de dados:
+    Para garantir a integridade do banco, o MySQL dispoe de mecanismos desenvolvidos para impedir a exclusao de dados em tabelas relacionadas, ou seja, para eliminar um valor na tabela de contendo uma chave extrangeira e preciso que este (o valor) seja eliminado o valor a este relacionado noutra tabela (para onde a chave estrangeira aponta) pois caso contrario, o sistema levanta um erro informando que existe um valor a este relacionado. E para inserir dado numa tabela contendo a chave estrangeira e necessario que a coluna por este apontado tenha sido preenchido, visto que este campo (da tabela com chave estrangeira) depende da coluna onde a chave estrangeira aponta.
+
+Desempenho:
+    E um sistema que dispoe de um desempenho satisfatorio quando o assunto e resposta as requisicoes feitas ao banco de dados mesmo na sua versao mais antiga, porem, nao aconselhavel a instalacao destas visto que novos recursos foram adicionados e o sistema foi optimizado na sua versao mais recente (versao 8).
+    O desempenho deste sistema pode ser ainda mais optimizado quando se usam "indices" (index) pois estes aceleram o processo de consulta e resposta, tornando o sistema mais flexivel.
+
+
+Desvantagens do MySQL
+
+Uma das desvantagens do MySQL, sendo a principal, é que em sistemas realmente complexos, outros bancos de dados são indicados, como o PostgreSQL e Oracle. Estes possuem maior porte, além de recursos avançados para suprir as necessidades.
