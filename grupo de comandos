@@ -1,4 +1,4 @@
-Grupo de comandos SQL
+ Grupo de comandos SQL
 
 Todo sistema d e gerenciamento de banco de dados obedece um padrao nos comandos usados para se comunicar com o banco, este padrao reside no agrupamento dos comandos quanto a sua funcao.
 
@@ -9,7 +9,7 @@ LDD = Linguagem de Definicao de Dados
     aceitar valores repetidos, atribuicao de chaves (primarias ou estrangeiras), entre outros detalhes relacionados
     a infra-estrutura.
 
-    Fazem parte deste grupo os seguintes comandos: CREATE, ALTER E DROP.
+    Fazem parte deste grupo os seguintes comandos: CREATE, ALTER, DROP e RENAME TABLES.
 
 
 LMD = Linguagem de Modelagem de Dados
@@ -28,15 +28,12 @@ LCD = Linguagem de Consulta de Dados
     Tambem e possivel retornar valores que estao em outras tabelas do mesmo banco, desde que estas estejam interligadas
     (geralmente com as chaves primaria e estrangeiras).
 
-    Fazem parte deste grupo os seguintes comandos: SELECT e suas clausulas.
+    Fazem parte deste grupo os seguintes comandos: SELECT e suas clausulas
 
 
-
-
-Uso de comandos de Definicao de Dados
+DEFINICAO DE DADOS
 
 CREATE (equivalente a "criar") = Usado para criar ususarios, banco de dados e tabelas.
-
 
 criar Ususario
 
@@ -128,3 +125,107 @@ sintax:
     DROP TABLE nome_da_tabela;
 
 E comando DROP, como ja referido acima, pode eliminar desde chaves a colunas, porem, nesses casos e usado junto com o comando ALTER como parte da modificacao do objecto do banco (tabela).
+
+
+RENAME (equivalente a "renomear") = usasdo para alterar nome de tabelas em um banco de dados podendo ser usasdo para alterar nome de uma ou mais tabelas.
+
+Mudar nome de objecto
+sintax:
+    RENAME TABLE nome_do_objecto TO novo_nome;
+    RENAME TABLES nome_1 TO nome_2, nome_a TO nome_b, etc.;
+
+
+
+
+MODELAGEM DE DADOS
+
+INSERT (equialente a "inserir") = comando usado para fazer a insercao de dados no banco de dados;
+
+Existem varias formas de inserir dados numa tabela sendo "insercao explicita em linha", "insercao explicita em linhas multiplas", "usando a clausula SET" e por meio de "extracao de dados" doutra tabela.
+
+Insercao explicita em linha
+sintax:
+    INSERT INTO nome_da_tabela (coluna1, coluna2, etc) VALUES(valor1, valor2, valor3);
+    NOTA: A a ordem das colunas nao precisa ser a da tabela, porem, a dos valores precisa corresponder a da definicao das colunas.
+
+Insercao explicita em linhas multiplas
+sintax:
+    INSERT INTO nome_da_tabela(coluna1, coluna2, etc) VALUES (valor1, valor2, etc), (valor3, valor4, etc), etc;
+
+Usando a clausula SET
+sintax:
+    INSERT INTO nome_da_tabela SET coluna1 = 'valor1', coluna2 = 'valor2', etc;
+
+Extracao de dados
+sintax:
+    INSERT INTO nome_da_tabela SELECT * FROM outra_tabela WHERE coluna = 'valor';
+
+
+UPDATE (equivalente a "actualizar") = usado para fazer actualizacao de determinados valores numa tabela.
+
+Actualizar valor
+Sintax:
+    UPDATE TABLE nome_da_tabela SET nome_da_coluna = 'novo_valor' WHERE nome_da_coluna = 'valor';
+
+
+DELETE (equivalente a "eliminar") = usado para eliminar dados da tabela.
+
+Eliminando uma linha especifica
+sintax:
+    DELETE FROM nome_da_tabela WHERE nome_da_coluna = 'valor';
+
+Eliminando todas linhas da tabela
+sintax:
+    DELETE FROM nome_da_tabela;
+
+
+CONSULTA DE DADOS
+
+SELECT (equivalente a "mostrar") = retorna valores que estao na tabela em funcao da condicao estabelecida. Este comando e comumente usado junto com a clausula WHERE, que permite especificar valores a serem retornados. E possivel retornar valores apenas especificando o par de chaves (coluna = 'valor') assim como pode se recorrer ao uso de estruturas condicionais como AND, OR e AND NOT.
+
+Tambem pode se ordenar o retorno de forma crescente ou decrescente em relacao a uma determinada coluna. O padrao do retorno e na ordem de insercao, ou seja, o valor sera retornado na posicao em que foi inserido.
+Para ordenar o retorno e preciso usar a clausula ORDER BY nome_da_coluna ASC|DESC.
+
+Mais personalizacao pode ser feita nos valores de retorno adicionando clausulas como OFFSET e LIMIT.
+    OFFSET = valor de partida, porem, excluso;
+    LIMIT = valor limite a ser retornado.
+
+Retornando todos valores da tabela
+Sintax:
+    SELECT * FROM nome_da_tabela;
+
+
+Especificando par de chaves
+sintax:
+    SELECT * FROM nome_da_tabela WHERE coluna1 = 'valor1';
+    SELECT * FROM nome_da_tabela WHERE coluna > 'valor';
+
+Usando a condicao AND
+Sintax:
+    SELECT * FROM clientes WHERE coluna > 'valor (INT)' AND coluna2 < 'valor3 (INT)';
+
+Usando a condicao OR
+Sintax:
+    SELECT * FROM clientes WHERE coluna > 'valor (INT)' OR coluna2 < 'valor3 (INT)';
+
+Usando a condicao AND NOT
+Sintax:
+    SELECT * FROM clientes WHERE coluna > 'valor (INT)' AND NOT coluna2 < 'valor3 (INT)';
+
+Usando clausula ORDER BY
+sintax:
+    SELECT * FROM nome_da_tabela ORDER BY coluna ASC|DESC;
+
+Usando clausula OFFSET
+Sintax:
+    SELECT * FROM nome_da_tabela OFFSET linha ROWS;
+
+Usando clausula LIMIT
+Sintax:
+    SELECT * FROM nome_da_tabela LIMIT numero_de_linhas
+
+Combinando as clausulas
+Sintax:
+    SELECT * FROM nome_da_tabela WHERE coluna = 'valor'
+    ORDER BY nome_da_coluna ASC|DESC
+    LIMIT numero_de_linhas (INT) OFFSET 'valor1';
