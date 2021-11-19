@@ -1,0 +1,49 @@
+To create user
+	create user minux@localhost [identified by 'password';]
+
+
+Grant privileges
+	GRANT privilege type 0N object type TO user@localhost;
+		privilege type {
+			all privileges,
+			select,
+			delete,
+			insert, 
+			update, etc.
+		}
+
+		object type / privilege level {
+			*,
+			*.*,
+			db_name.*,
+			db_name.table,
+			table_name.atribute, etc.
+		}
+	
+
+Proxy user ("clone a user to another")
+	GRANT PROXY ON current_user	TO other_user;
+	
+	EX: GRANT PROXY ON root TO minux@localhost;
+
+
+Show users
+	SELECT USER FROM mysql.user;
+
+
+Show grants
+	SHOW GRANTS FOR user;
+
+
+Revoke grants
+	REVOKE privilege type 
+	ON object type / privilege level
+	FROM user@localhost;
+	
+	
+Drop user
+	DROP USER user@localhost [identified by 'password'];
+
+Saving changes
+	FLUSH PRIVILEGES
+
