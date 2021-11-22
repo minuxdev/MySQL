@@ -13,8 +13,22 @@ SELECT
     EX: SELECT * FROM nome_da_tabela;
         SELECT atributo1 [, atributo2, etec] FROM nome_da_tabela WHERE  atributo='valor';
 
-DELETE
+DELETE [TRUNCATE TABLE]
     usado para deletar instancias de entidades e ou dados da tabela;
-    Ex: DELETE FROM nome_da_tabela; --> Deleta todos dados da tabela;
+    Ex: DELETE FROM (ou TRUNCATE TABLE) nome_da_tabela; --> Deleta todos dados da tabela;
         DELETE FROM nome_da_tabela WHERE atributo=valor; --> elimina uma instancia de entidade especifica;
         
+UPDATE
+    usado para actualizar instancias de entidade na tabela;
+    Ex: UPDATE nome_da_tabela SET atributo = valor WHERE atributo =v alor; 
+    
+    NOTA IMPORTANTE: ao usar o comando UPDATE sem especificar a instancia a ser acutualizada (com a clausula WHERE), 
+    faz com que os valores de todas instancias no atributo a ser actualizado passem a ter o mesmo valor!
+    
+    
+INER JOIN
+    Usado para retornar dados de duas taelas ao mesmo tempo, desde que estas tenham uma relacao entre si 
+    (usando as chaves, ex: primaria e estrangeira);
+    Ex: SELECT atributo1_a, atributo1_b FROM nome_da_tabela_a 
+        INNER JOIN nome_da_tabela_2
+        ON nome_da_tabela_a.atributo(com chave primaria) = nome_da_tabela_b.atributo(com chave estrangeira);
