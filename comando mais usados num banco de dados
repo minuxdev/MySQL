@@ -1,0 +1,20 @@
+os comandos mais importantes num banco de dados
+
+CREATE
+    Usado para criar, ususario, banco de dados e tabelas.
+    Ex: Create user nome_de_usuario;
+
+INSERT
+    usado para inserir dados no banco de dados.
+    Ex: INSERT INTO nome_da_tabela(atributo1, atributo2,etc) VALUES (valor1, valor2, etc);
+
+SELECT
+    usado para fazer consultas no banco.
+    EX: SELECT * FROM nome_da_tabela;
+        SELECT atributo1 [, atributo2, etec] FROM nome_da_tabela WHERE  atributo='valor';
+
+DELETE
+    usado para deletar instancias de entidades e ou dados da tabela;
+    Ex: DELETE FROM nome_da_tabela; --> Deleta todos dados da tabela;
+        DELETE FROM nome_da_tabela WHERE atributo=valor; --> elimina uma instancia de entidade especifica;
+        
