@@ -3,6 +3,8 @@ os comandos mais importantes num banco de dados
 CREATE
     Usado para criar, ususario, banco de dados e tabelas.
     Ex: Create user nome_de_usuario;
+    Ex2: Create table nome_da_tabela(atributo1 --> FK, atributo2,..., atributoN, 
+        foreign key(atributo1) references nome_da_tabela_2(atributo1 --> PK);
 
 INSERT
     usado para inserir dados no banco de dados.
@@ -26,7 +28,7 @@ UPDATE
     faz com que os valores de todas instancias no atributo a ser actualizado passem a ter o mesmo valor!
     
     
-INER JOIN
+INNER JOIN
     Usado para retornar dados de duas taelas ao mesmo tempo, desde que estas tenham uma relacao entre si 
     (usando as chaves, ex: primaria e estrangeira);
     Ex: SELECT atributo1_a, atributo1_b FROM nome_da_tabela_a 
